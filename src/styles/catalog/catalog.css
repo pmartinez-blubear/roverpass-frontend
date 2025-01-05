@@ -81,6 +81,10 @@
 .cardDescription{
     font-size: 16px;
     color: var(--complementary-700);
+    min-height: 72px;
+    max-height: 72px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .containerPrice{
     display: flex;

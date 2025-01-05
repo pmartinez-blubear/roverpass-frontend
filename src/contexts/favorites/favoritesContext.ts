@@ -1,13 +1,5 @@
 import { createContext, useContext } from "react";
-import { Campground } from "../../interfaces/campgrounds/campgroundsInterface";
-
-interface FavoritesContextType {
-    favoritesCampgrounds: Campground[];
-    addFavoriteCampground: (campground:Campground) => void;
-    deleteFavoriteCampground: (campground:Campground) => void;
-    updateFavoriteCampground: (campgrounds:Campground[]) => void;
-}
-
+import { FavoritesContextType } from "../../interfaces/campgrounds/campgroundsInterface";
 
 const FavoritesContext = createContext<FavoritesContextType | undefined >( undefined);
 

@@ -1,7 +1,6 @@
 import { useEffect, useReducer } from "react";
 import { favoritesReducer } from "./reducer/favoritesReducer";
-import { Campground } from "../../interfaces/campgrounds/campgroundsInterface";
-
+import {  FavoriteCampground } from "../../interfaces/campgrounds/campgroundsInterface";
 
 const init = () => {
     const getSaved = localStorage.getItem('saved')
@@ -15,15 +14,15 @@ const useProviderFavorites = () => {
         localStorage.setItem('saved', JSON.stringify( favoritesCampgrounds ));
     }, [favoritesCampgrounds])
 
-    const addFavoriteCampground = (campground:Campground) => {
+    const addFavoriteCampground = (campground:FavoriteCampground) => {
         dispatch({ type: 'addFavorite', payload: campground })
     }
 
-    const deleteFavoriteCampground = (campground:Campground) => {
+    const deleteFavoriteCampground = (campground:FavoriteCampground) => {
         dispatch({ type: 'removeFavorite', payload: campground.id })
     }
 
-    const updateFavoriteCampground = (campgrounds:Campground[]) => {
+    const updateFavoriteCampground = (campgrounds:FavoriteCampground[]) => {
         dispatch({ type: 'updateFavorite', payload: campgrounds })
     }
 

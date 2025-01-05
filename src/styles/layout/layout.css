@@ -21,3 +21,8 @@
         padding: 48px 76px;
     }
 }
+@media screen and (min-width: 1280px){
+    .containerPage{
+        max-width: 1366px;
+    }
+}

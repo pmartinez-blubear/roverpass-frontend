@@ -2,28 +2,28 @@
 import { useEffect, useState } from 'react';
 import TempImage from '../../assets/temp_card.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Campgrounds } from '../../interfaces/campgrounds/campgroundsInterface';
+import { Campgrounds, FavoriteCampground } from '../../interfaces/campgrounds/campgroundsInterface';
 import { useAuth } from '../../contexts/auth/authContext';
 import useSaveFavoriteCampgrounds from '../../hooks/campgrounds/useSaveFavoriteCampground';
 import useDeleteFavoriteCampgrounds from '../../hooks/campgrounds/useDeleteFavoriteCampground';
 import '../../styles/catalog/catalog.css'
 
 interface CardCatalogProps {
-    isSaved: boolean;
-    campground:Campgrounds
+    campground:Campgrounds,
+    favoriteCampground: FavoriteCampground[] | undefined
 }
-function CardCatalog({isSaved, campground}:CardCatalogProps) {
+function CardCatalog({campground, favoriteCampground}:CardCatalogProps) {
     
     const auth = useAuth()
     const { saveFavoriteCampground, isLoadingFavorite } = useSaveFavoriteCampgrounds()
     const { removeFavoriteCampground, isLoadingDeleteFavorite } = useDeleteFavoriteCampgrounds()
     
 
-    const [saved, setSaved] = useState(isSaved);
+    const [saved, setSaved] = useState(favoriteCampground?.find((camp:FavoriteCampground) => camp.campground.id === campground.id));
 
     useEffect(() => {
-        setSaved(isSaved)
-    },[isSaved])
+        setSaved(favoriteCampground?.find((camp:FavoriteCampground) => camp.campground.id === campground.id))
+    },[favoriteCampground])
     
 
     const handleSaveCamp = () => {
@@ -35,13 +35,14 @@ function CardCatalog({isSaved, campground}:CardCatalogProps) {
         if(!saved){
             saveFavoriteCampground(campground)
         }else{
-            removeFavoriteCampground(campground)
+            const findInFavorite = favoriteCampground?.find((camp:FavoriteCampground) => camp.campground.id === campground.id)
+            if(findInFavorite) removeFavoriteCampground(findInFavorite)
         }
     }
 
     return (       
         <div className="cardCatalog">
-            <img src={TempImage} className="imageCatalog" alt="..." />
+            <img src={ campground.image } className="imageCatalog" alt="..." />
             <div className="cardInfo">
                 <div className='containerTitleRanking'>
                     <div className='containerTitle'>

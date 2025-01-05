@@ -1,5 +1,4 @@
 import axios from "axios";
-import { getLocalStorage } from "../providers/localStorage/localStorageProvider";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -13,7 +12,7 @@ export const axiosRequestInterceptor = () => {
       const token = localStorage.getItem("token") ?? '';
 
       config.headers["Content-Type"] = "application/json"
-      config.headers["Access-Control-Expose-Headers"] = "authorization"
+      config.headers["Access-Control-Expose-Headers"] = "Authorization",'authorization'
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
@@ -26,9 +25,9 @@ export const axiosRequestInterceptor = () => {
 
   axiosPetition.interceptors.response.use(
     (response) => {
-      console.log(response.headers)
-        if (response.data?.token) {
-            localStorage.setItem('token', response.data.token) ; // Update the token
+        if (response.headers['authorization']) {
+            const newToken = response.headers['authorization'].split(' ')
+            localStorage.setItem('token', newToken[1]) ; // Update the token
         }
         return response;
     },

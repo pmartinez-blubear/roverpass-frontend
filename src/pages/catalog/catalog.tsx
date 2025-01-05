@@ -1,11 +1,11 @@
 import CardCatalog from "../../components/catalog/cardCatalog"
 import useCampgrounds from "../../hooks/campgrounds/useCampgrounds"
 import { useEffect } from "react"
-import useProviderFavorites from "../../hooks/campgrounds/useProviderFavorites"
+import { useFavorites } from "../../contexts/favorites/favoritesContext"
 function Catalog(){
 
     const { campgrounds, getCampgrounds} = useCampgrounds()
-    const { favoritesCampgrounds } = useProviderFavorites()
+    const favoriteCampground = useFavorites()
     
     useEffect(() => {
         getCampgrounds()
@@ -18,7 +18,7 @@ function Catalog(){
                 <CardCatalog 
                     key={campground.id} 
                     campground={campground} 
-                    isSaved={favoritesCampgrounds.find((camp)=>camp.id === campground.id)} 
+                    favoriteCampground={favoriteCampground?.favoritesCampgrounds}
                 /> 
             )}
         </section>

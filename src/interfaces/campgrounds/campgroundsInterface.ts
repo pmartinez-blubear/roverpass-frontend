@@ -1,6 +1,7 @@
 export interface Campgrounds {
     id:          number;
     name:        string;
+    image:       string;
     location:    string;
     description: string;
     price:       number;
@@ -21,3 +22,9 @@ export interface FavoriteCampground {
 }
 
 
+export interface FavoritesContextType {
+    favoritesCampgrounds: FavoriteCampground[];
+    addFavoriteCampground: (campground:FavoriteCampground) => void;
+    deleteFavoriteCampground: (campground:FavoriteCampground) => void;
+    updateFavoriteCampground: (campgrounds:FavoriteCampground[]) => void;
+}

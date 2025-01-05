@@ -18,8 +18,7 @@ const useFavoritePage = () => {
           });
 
          if(data){
-            const campgrounds = data.data.map((campground) => campground.campground)
-            useFavorite?.updateFavoriteCampground(campgrounds)
+            useFavorite?.updateFavoriteCampground(data.data)
          } 
     }
 

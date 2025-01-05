@@ -9,7 +9,7 @@ import '../../../styles/profile/profile.css'
 
 function ProfileFavorites() {
 
-    const useFavoriteCampground = useFavorites()
+    const favoriteCampground = useFavorites()
 
     const { getFavoritesCampgrounds } = useFavoritePage()
 
@@ -25,9 +25,10 @@ function ProfileFavorites() {
             <section className="containerProfileContent">
                 <h1>My favorites campgrounds</h1>
                 {
-                    useFavoriteCampground?.favoritesCampgrounds && useFavoriteCampground?.favoritesCampgrounds.length > 0 ? 
+                    
+                    favoriteCampground?.favoritesCampgrounds && favoriteCampground?.favoritesCampgrounds.length > 0 ? 
                     <div className="containerCardsFavorites">
-                        { useFavoriteCampground?.favoritesCampgrounds.map((campground) => <CardFavorites key={campground.id} campground={campground} />) }
+                        { favoriteCampground?.favoritesCampgrounds.map((campground) => <CardFavorites key={campground.id} campground={campground} />) }
                     </div> :
                     <div className="messageNoItems">
                         <FontAwesomeIcon icon={['fas', 'tents']} className='noItemIcon' />
