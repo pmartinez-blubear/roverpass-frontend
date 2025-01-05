@@ -1,0 +1,102 @@
+.containerProfile{
+    width: 100%;
+    min-height: 50vh;
+    display: grid;
+    grid-template-columns:1fr;
+    gap: 24px;
+}
+.containerMenuProfile{
+    width: 100%;
+    display: grid;
+    border-bottom: 1px solid var(--complementary-300);
+    align-items: start;
+    padding: 0;
+    justify-content: flex-start;
+}
+
+.containerProfileContent{
+    width: 100%;
+    display: grid;
+    gap: 16px;
+    align-content : start;
+}
+
+.containerCardsFavorites{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.buttonMenuProfile{
+    background: transparent;
+    margin: 0;
+    border: none;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 400;
+}
+.buttonMenuProfile.selected{
+    color:var(--salmon);
+    font-weight: 500;
+    border-bottom: 3px solid var(--salmon);
+}
+
+/*card favorites*/
+.cardFavorites{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--complementary-300);
+    overflow: hidden;
+    border-radius: 12px;
+}
+.imageCard{
+    width: 100%;
+}
+.containerInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+}
+.messageNoItems{
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+}
+.noItemIcon{
+    font-size: 60px;
+    color: var(--complementary-300);
+}
+.messageNoItems p{
+    color: var(--complementary-400);
+}
+.containerButton{
+    max-width: 250px;
+}
+
+@media screen and (min-width: 768px){
+    .containerProfile{
+        grid-template-columns:230px 1fr;
+        gap: 24px;
+    }
+    .containerMenuProfile{
+        border-right: 1px solid var(--complementary-300);
+        border-bottom: none;
+        padding: 24px 0;
+        justify-content: unset;
+    }
+    .buttonMenuProfile.selected{
+        border-right: 3px solid var(--salmon);
+        border-bottom: none;
+    }
+    .containerCardsFavorites{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}

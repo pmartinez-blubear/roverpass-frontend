@@ -1,0 +1,112 @@
+header{
+    width: 100%;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--complementary-300);
+    position: sticky;
+    top: 0;
+    background-color: var(--white);
+    z-index: 100;
+}
+header .logo{
+    width: 200px;
+}
+.infoUser {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.nameUser{
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--complementary-500);
+    display: none;
+}
+.containerMenu{
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+.btnMenu{
+    color: var(--complementary-700);
+    border: none;
+    background: transparent;
+}
+.btnMenu:hover{
+    cursor: pointer;
+    color: var(--complementary-800);
+}
+.btnLogin{
+    max-width: 200px;
+}
+.containerLogged{
+    position: relative;
+}
+
+.iconUser{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: var(--complementary-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.iconUser:hover{
+    cursor: pointer;
+}
+
+.colorIcon{
+    width: 20px;
+    color: var(--complementary-500);
+}
+.containerSubmenu{
+    width: 100%;
+    min-width: 250px;
+    max-width: 250px;
+    background: white;
+    box-shadow: 0px 0px 10px rgba(var(--complementary-800), 0.2);
+    border: 1px solid var(--complementary-300);
+    border-radius: 12px;
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.containerSubmenu .btn_submenu {
+    width: 100%;
+    padding: 8px 16px;
+    border: none;
+    border-bottom: 1px solid var(--complementary-300);
+    font-weight: 500;
+    color: var(--complementary-800);
+    background-color: transparent;
+    text-align: center ;
+}
+.containerSubmenu .btn_submenu:visited, .containerSubmenu .btn_submenu:link {
+    text-decoration: none  ;
+}
+.containerSubmenu .btn_submenu:hover {
+    cursor: pointer;
+    background-color: var(--complementary-100);
+}
+.containerSubmenu .btn_submenu.logout {
+    color:var(--danger-red);
+}
+.containerSubmenu .btn_submenu:last-child {
+    border-bottom: none;
+}
+
+@media screen and (min-width: 768px){
+    header{
+        padding: 0 76px;
+    }
+    .nameUser{
+        display: block;
+    }
+}

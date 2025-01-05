@@ -1,0 +1,133 @@
+:root {
+  --salmon: #FF5252;
+  --salmon-hover:#e74d4d;
+  --mirage: #17232C;
+  --white: #ffffff;
+  --navy: #1F4965;
+  --success-green: #28A745;
+  --notification-blue:  #1E93EC;
+  --danger-red: #D9534F;
+  --danger-red-opacity: #d9544f41;
+  --black:  #000000;
+  --complementary-800: #31414D;
+  --complementary-700: #4E6270;
+  --complementary-600: #6C8495;
+  --complementary-500: #91A4B1;
+  --complementary-400: #BCC8D2;
+  --complementary-300: #E0E7ED;
+  --complementary-200: #EDF1F5;
+  --complementary-100: #FBFCFD;
+  --overlay-color: #31414db9;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Roboto", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+input, button, textarea, select {
+  font: inherit;
+}
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  font-family: "Red Hat Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/* fonts */
+.roboto-light {
+  font-family: "Roboto", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: "Roboto", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.red-hat-font {
+  font-family: "Red Hat Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* common css */
+.buttonPrimary{
+  background-color: var(--salmon);
+  color: var(--white);
+  border: none;
+  padding: 8px 16px;
+  width: 100%;
+  font-weight: 700;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.buttonPrimary:hover {
+  cursor: pointer;
+  background-color: var(--salmon-hover);
+}
+
+
+.buttonSecundary{
+  width: 100%;
+  border: 1px solid var(--salmon);
+  color: var(--salmon);
+  background: var(--white);
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.buttonSecundary:hover{
+  background: var(--salmon-hover);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.errorContainer{
+  width: 100%;
+  padding: 4px 16px;
+  border-radius: 4px;
+  background: var(--danger-red-opacity);
+}
+
+.errorMessage {
+  color: var(--danger-red);
+  font-size: 14px;
+  font-weight: 500;
+}
