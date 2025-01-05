@@ -35,12 +35,18 @@
     gap: 4px;
     border: 0;
     padding: 0;
+    position: relative;
 }
 .inputContainer label{
     font-size: 16px;
     color: var(--mirage);
 }
+.containerInput{
+    width: 100%;
+    position: relative;
+}
 .inputContainer input{
+    width: 100%;
     height: 53px;
     border: 1px solid var(--complementary-400);
     border-radius: 8px;
@@ -76,6 +82,19 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+.passwordEyeIcon{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 20px;
+    color: var(--complementary-400);
+}
+.passwordEyeIcon.active{
+    color: var(--complementary-500);
+}
+.passwordEyeIcon:hover {
+    cursor: pointer;
 }
 
 @media screen and (min-width: 768px){

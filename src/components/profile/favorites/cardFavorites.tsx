@@ -7,16 +7,14 @@ import PrimaryButton from '../../common/button/PrimaryButton';
 import useDeleteFavoriteCampgrounds from '../../../hooks/campgrounds/useDeleteFavoriteCampground';
 
 interface CardSavedProps {
-  campground:FavoriteCampground
+  campground:FavoriteCampground,
+  isLoadingDeleteFavorite:boolean,
+  deleteCampground:(deleteCampground:FavoriteCampground) => void
 }
 
-function CardFavorites({ campground }:CardSavedProps) {
+function CardFavorites({ campground, isLoadingDeleteFavorite, deleteCampground }:CardSavedProps) {
 
-  const { isLoadingDeleteFavorite, removeFavoriteCampground } = useDeleteFavoriteCampgrounds();
-
-  const handleDelete = () => {
-    removeFavoriteCampground(campground)
-  }
+  
 
   return (
     <div className='cardFavorites'>
@@ -34,7 +32,7 @@ function CardFavorites({ campground }:CardSavedProps) {
                 title="Delete from favorites" 
                 isLoading={  isLoadingDeleteFavorite } 
                 classType='buttonSecundary'
-                click={ () => handleDelete() }
+                click={ () => deleteCampground(campground) }
             />
         </div>
     </div>

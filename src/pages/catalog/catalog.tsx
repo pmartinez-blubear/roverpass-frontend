@@ -1,7 +1,10 @@
 import CardCatalog from "../../components/catalog/cardCatalog"
 import useCampgrounds from "../../hooks/campgrounds/useCampgrounds"
-import { useEffect } from "react"
+import { Suspense, useEffect } from "react"
 import { useFavorites } from "../../contexts/favorites/favoritesContext"
+
+
+
 function Catalog(){
 
     const { campgrounds, getCampgrounds} = useCampgrounds()
@@ -12,18 +15,24 @@ function Catalog(){
     },[])
 
     return (
+        <Suspense fallback={<Loading />}>
+            <section className="containerCatalog">
+                { campgrounds.map((campground) => 
+                    <CardCatalog 
+                        key={campground.id} 
+                        campground={campground} 
+                        favoriteCampground={favoriteCampground?.favoritesCampgrounds}
+                    /> 
+                )}
+            </section>
+        </Suspense>
         
-        <section className="containerCatalog">
-            { campgrounds.map((campground) => 
-                <CardCatalog 
-                    key={campground.id} 
-                    campground={campground} 
-                    favoriteCampground={favoriteCampground?.favoritesCampgrounds}
-                /> 
-            )}
-        </section>
         
     )
 }
+
+function Loading() {
+    return <h2>🌀 Loading...</h2>;
+  }
 
 export default Catalog
