@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { describe, it, vi } from 'vitest';
 import Catalog from '../../pages/catalog/catalog';
 import useCampgrounds from '../../hooks/campgrounds/useCampgrounds';
@@ -34,7 +34,8 @@ const mockCampgrounds:Campgrounds[] = [
 const mockFavorites = [mockCampgrounds[0]];
 
 describe('Campground List Page', () => {    
-    it('call API getCampgrounds & renders list campgrounds', () => {
+    
+    it('call API getCampgrounds & renders list campgrounds', async () => {
         const getCampgroundsMock = vi.fn();
         (useCampgrounds as jest.Mock).mockReturnValue({
             campgrounds: mockCampgrounds,
@@ -44,7 +45,10 @@ describe('Campground List Page', () => {
             favoritesCampgrounds: mockFavorites,
         });
         render(<Catalog />);
-        expect(getCampgroundsMock).toHaveBeenCalledTimes(1);
+        await waitFor(() => {
+            expect(getCampgroundsMock).toHaveBeenCalledTimes(1);
+        })
+        
         mockCampgrounds.forEach((campground) => {
             expect(screen.getByText(campground.name)).toBeInTheDocument();
         });
@@ -57,6 +61,8 @@ describe('Campground List Page', () => {
         expect(screen.getByText('Description campground Las Vegas')).toBeInTheDocument();
         expect(screen.getByText('From $30 USD')).toBeInTheDocument();
     });
+
+    
 
 
     /*it('marks favorite campgrounds', () => {

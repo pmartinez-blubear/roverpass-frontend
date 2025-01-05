@@ -3,7 +3,7 @@ import { getLocalStorage } from "../../providers/localStorage/localStorageProvid
 import { axiosRequestInterceptor } from "../../interceptor/axios";
 import { handleError } from "../../utils/errorMessages";
 import { useLocation, useNavigate } from "react-router";
-import { set } from "react-hook-form";
+import { LoginForm } from "../../interfaces/login/LoginInterface";
 
 const axiosPetition = axiosRequestInterceptor();
 
@@ -20,23 +20,19 @@ const useProvideAuth = () => {
     const location = useLocation()
     const navigate = useNavigate();
   
-    const login = async (email:string, password:string) => {
+    const login = async (formLogin:LoginForm) => {
       setIsLoadingAuth(true);
       setErrorAuth('')
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       
-      const raw = JSON.stringify({
-        "email_address": email,
-        "password": password
-      });
       try{
-        const data = await axiosPetition.post<LoginResponse>('/session', raw).catch((error) => {
+        const data = await axiosPetition.post<LoginResponse>('/session', formLogin).catch((error) => {
             setErrorAuth(handleError(error));
         });
         if(data){
           const user = {
-            email
+            email:formLogin.email_address
           }
           setUser(user)
           localStorage.setItem('user', JSON.stringify(user));

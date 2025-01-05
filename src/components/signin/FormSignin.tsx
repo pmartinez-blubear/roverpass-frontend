@@ -8,11 +8,10 @@ import ErrorMessage from "../common/error/ErrorMessage";
 function FormSignin () {
     const auth = useAuth();
     
-    
     const { register, handleSubmit, formState: { errors } } = useForm<LoginForm>()
 
     const LoginUser: SubmitHandler<LoginForm> = (data) => {
-        auth?.login(data.email.trim(), data.password.trim())
+        auth?.login(data)
     }
     
     return(
@@ -21,9 +20,9 @@ function FormSignin () {
                 <Input
                     type='email'
                     register={ register }
-                    name='email'
+                    name='email_address'
                     label='Email'
-                    error={errors?.email?.message ?? ''}
+                    error={errors?.email_address?.message ?? ''}
                     options={{
                         required:'Email is required',
                         pattern: {

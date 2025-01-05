@@ -16,6 +16,7 @@ const Input = ({ label, type = 'text', name, register, placeholder, error, chang
         <fieldset className='inputContainer'>
             <label htmlFor={name}>{label}</label>
             <input
+                id={name}
                 type={type}
                 {...register(name, options)}
                 placeholder={ placeholder }

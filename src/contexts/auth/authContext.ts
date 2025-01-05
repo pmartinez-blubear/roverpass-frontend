@@ -1,22 +1,5 @@
 import { createContext, useContext } from "react";
-
-
-export interface AuthContextType {
-    user: User | null;
-    login: (email:string, password:string) => void;
-    logout: () => void;
-    handleShowModalLogin: (value:boolean) => void;
-    showModalLogin:boolean
-    handleShowModalLogout: (value:boolean) => void;
-    showModalLogout:boolean,
-    errorAuth:string,
-    isLoadingAuth:boolean
-}
-
-interface User {
-  email:string;
-  token:string
-}
+import { AuthContextType } from "../../interfaces/login/LoginInterface";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 

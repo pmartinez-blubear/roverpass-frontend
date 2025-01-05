@@ -11,11 +11,11 @@ function ProfileFavorites() {
 
     const useFavoriteCampground = useFavorites()
 
-    /*const { getFavoritesCampgrounds, favoriteCampgrounds} = useFavoritePage()
+    const { getFavoritesCampgrounds } = useFavoritePage()
 
     useEffect(() => {
         getFavoritesCampgrounds()
-    },[])*/
+    },[])
 
     return (
         <div className="containerProfile">

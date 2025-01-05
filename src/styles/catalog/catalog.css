@@ -113,12 +113,17 @@
 @media screen and (min-width: 768px){
     .cardCatalog{
         gap: 24px;
-        grid-template-columns: 376px 1fr;
+        grid-template-columns: 300px 1fr;
     }
     .cardInfo {
         padding: 16px 24px 16px 0;
     }
     .containerTitle h2{
         font-size: 28px;
+    }
+}
+@media screen and (min-width: 1024px){
+    .cardCatalog{
+        grid-template-columns: 376px 1fr;
     }
 }

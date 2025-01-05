@@ -13,6 +13,7 @@ export const axiosRequestInterceptor = () => {
       const token = localStorage.getItem("token") ?? '';
 
       config.headers["Content-Type"] = "application/json"
+      config.headers["Access-Control-Expose-Headers"] = "authorization"
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
@@ -25,6 +26,7 @@ export const axiosRequestInterceptor = () => {
 
   axiosPetition.interceptors.response.use(
     (response) => {
+      console.log(response.headers)
         if (response.data?.token) {
             localStorage.setItem('token', response.data.token) ; // Update the token
         }
