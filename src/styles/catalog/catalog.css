@@ -78,6 +78,9 @@
     font-size: 18px;
     color: var(--navy);
 }
+.cardTitle{
+    font-size: 22px;
+}
 .cardDescription{
     font-size: 16px;
     color: var(--complementary-700);
@@ -112,6 +115,17 @@
     gap: 8px;
     font-size: 14px;
     color: var(--complementary-700);
+}
+
+.containerSearch{
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    gap: 4px;
+    position: sticky;
+    top: 67px;
+    background: white;
+    z-index: 100;
+    padding: 16px 0;
 }
 
 @media screen and (min-width: 768px){

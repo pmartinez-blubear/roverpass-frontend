@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { RegisterOptions, UseFormRegister } from 'react-hook-form';
 
 interface InputProps {
-    label: string,
+    label?: string,
     type: string;
     name: string;
     placeholder?: string;
@@ -13,7 +13,7 @@ interface InputProps {
     options?:RegisterOptions;
 }
 
-const Input = ({ label, type = 'text', name, register, placeholder, error, change, options }:InputProps) => {
+const Input = ({ label = '', type = 'text', name, register, placeholder, error, change, options }:InputProps) => {
 
     const [ typeInput, setTypeInput ] = useState(type)
 
@@ -23,7 +23,7 @@ const Input = ({ label, type = 'text', name, register, placeholder, error, chang
 
     return (
         <fieldset className='inputContainer'>
-            <label htmlFor={name}>{label}</label>
+            {label && <label htmlFor={name}>{label}</label> }
             <div className='containerInput'>
                 <input
                     id={name}

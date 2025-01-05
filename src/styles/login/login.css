@@ -54,7 +54,9 @@
     font-size: 16px;
     color: var(--mirage);
 }
-
+.inputContainer input::placeholder{
+    color: var(--complementary-400);
+}
 .btnSignIn{
     border: 0;
     border-radius: 12px;

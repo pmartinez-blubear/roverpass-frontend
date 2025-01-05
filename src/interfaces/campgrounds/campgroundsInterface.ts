@@ -8,6 +8,7 @@ export interface Campgrounds {
     created_at?:  Date;
     updated_at?:  Date;
     url?:         string;
+    is_favorited: boolean | null;
 }
 
 

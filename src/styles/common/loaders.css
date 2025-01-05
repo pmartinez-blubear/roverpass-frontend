@@ -25,3 +25,21 @@
 }
 
 @keyframes l3 {to{transform: rotate(1turn)}}
+
+
+.loaderCard{
+  width: 100%;
+  background: linear-gradient(110deg, var(--complementary-100) 8%, var(--white) 18%, var(--complementary-100) 33%);
+  animation: shine 1s linear infinite;
+  border-radius: 27px;
+}
+
+@keyframes shine {
+  0% {
+      background-position: -400px 0;
+  }
+
+  100% {
+      background-position: 400px 0;
+  }
+}

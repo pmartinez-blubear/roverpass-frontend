@@ -19,10 +19,11 @@ function CardCatalog({campground, favoriteCampground}:CardCatalogProps) {
     const { removeFavoriteCampground, isLoadingDeleteFavorite } = useDeleteFavoriteCampgrounds()
     
 
-    const [saved, setSaved] = useState(favoriteCampground?.find((camp:FavoriteCampground) => camp.campground.id === campground.id));
+    const [saved, setSaved] = useState(campground.is_favorited ?? false);
 
     useEffect(() => {
-        setSaved(favoriteCampground?.find((camp:FavoriteCampground) => camp.campground.id === campground.id))
+        const isFavorite = favoriteCampground?.find((camp:FavoriteCampground) => camp.campground.id === campground.id)
+        setSaved( isFavorite ? true : false)
     },[favoriteCampground])
     
 
@@ -46,7 +47,7 @@ function CardCatalog({campground, favoriteCampground}:CardCatalogProps) {
             <div className="cardInfo">
                 <div className='containerTitleRanking'>
                     <div className='containerTitle'>
-                        <h2 className="card-title ">{ campground.name }</h2>
+                        <h2 className="cardTitle ">{ campground.name }</h2>
                         <button className={`saveButton ${isLoadingDeleteFavorite || isLoadingFavorite ? 'disabled' : ''}`} onClick={handleSaveCamp}>
                             { saved ? 
                                 <FontAwesomeIcon icon={['fas', 'heart']} className='likeIcon' /> :

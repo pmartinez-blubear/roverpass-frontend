@@ -29,17 +29,25 @@ header .logo{
     align-items: center;
     gap: 48px;
 }
+.containerMenu img{
+    width: 170px;
+}
 .btnMenu{
     color: var(--complementary-700);
     border: none;
     background: transparent;
+    text-decoration: none;
+    font-size: 24px
+}
+.btnMenu.active{
+    font-weight: 600;
 }
 .btnMenu:hover{
     cursor: pointer;
     color: var(--complementary-800);
 }
 .btnLogin{
-    max-width: 200px;
+    max-width: 100px;
 }
 .containerLogged{
     position: relative;
@@ -102,11 +110,112 @@ header .logo{
     border-bottom: none;
 }
 
+.sectionLeft{
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap:8px;
+}
+.navContainer{
+    width: 100%;
+    height: calc(100% - 67px);
+    top: 67px;
+    right: 100%;
+    position: fixed;
+    background: var(--white);
+    transition: 0.3s all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 18px;
+    flex-direction: column;
+}
+.navContainer.active {
+    right: 0;
+}
+.hamburgerMenu{
+    width: 28px;
+    min-width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    position: relative;
+}
+
+.hamburgerMenu span, .hamburgerMenu span::after, .hamburgerMenu span::before{
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--complementary-800);
+    transition: 0.3s all;
+}
+.hamburgerMenu span::after, .hamburgerMenu span::before{
+    content: '';
+    position: absolute;
+    left: 0;
+}
+.hamburgerMenu span::after{
+    top: 2px;
+}
+
+.hamburgerMenu span::before{
+    bottom: 2px;
+}
+.hamburgerMenu.active span{
+    background: transparent;
+}
+.hamburgerMenu.active span::after{
+    transform: rotate(45deg);
+    top: 12px;
+}
+.hamburgerMenu.active span::before{
+    transform: rotate(-45deg);
+    bottom: 12px;
+}
+
+
 @media screen and (min-width: 768px){
     header{
         padding: 0 76px;
     }
     .nameUser{
         display: block;
+    }
+    .btnLogin{
+        max-width: 200px;
+    }
+    .containerMenu img{
+        width: 180px;
+    }
+    .sectionLeft{
+        gap: 36px;
+    }
+    .navContainer{
+        height: unset;
+        position: relative;
+        top: unset;
+        right: unset;
+        background: transparent;
+        padding-top: 0;
+        gap: 16px;
+        flex-direction: row;
+    }
+    .hamburgerMenu{
+        display: none;
+    }
+    .btnMenu{
+        font-size: 16px;
+    }
+}
+@media screen and (min-width: 1024px){
+    .navContainer{
+        gap: 24px;
     }
 }

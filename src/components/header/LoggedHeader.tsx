@@ -14,7 +14,6 @@ interface LoggerHeaderInterface {
 function LoggedHeader({userEmail}:LoggerHeaderInterface) {
 
     const auth = useAuth();
-    const [ email, setEmail ] = useState(userEmail);
     const [ showMenu, setShowMenu ] = useState(false);
 
     const handleSubmenuAction = (action:string) => {
@@ -28,7 +27,7 @@ function LoggedHeader({userEmail}:LoggerHeaderInterface) {
     return (
         <div className='containerLogged'>
             <div data-testid="loggedButton" className='infoUser' onClick={() => setShowMenu(!showMenu)}>
-                <p className='nameUser'>Welcome, { email }</p>
+                <p className='nameUser'>Welcome, { userEmail }</p>
                 <div className='iconUser'>
                     <FontAwesomeIcon icon={['fas', 'user']} className='colorIcon' />
                 </div>

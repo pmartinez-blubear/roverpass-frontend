@@ -23,6 +23,7 @@ function FormSignin () {
                     name='email_address'
                     label='Email'
                     error={errors?.email_address?.message ?? ''}
+                    placeholder="example@roverpass.com"
                     options={{
                         required:'Email is required',
                         pattern: {
@@ -36,6 +37,7 @@ function FormSignin () {
                     register={ register }
                     name='password'
                     label='Password'
+                    placeholder="*******"
                     error={errors?.password?.message ?? ''}
                     options={{ required:'Password is required'}}
                 />

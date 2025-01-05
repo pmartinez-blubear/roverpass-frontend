@@ -1,31 +1,67 @@
-import CardCatalog from "../../components/catalog/cardCatalog"
 import useCampgrounds from "../../hooks/campgrounds/useCampgrounds"
-import { Suspense, useEffect } from "react"
-import { useFavorites } from "../../contexts/favorites/favoritesContext"
+import { useEffect, useMemo, useState } from "react"
+import LoaderCard from "../../components/common/loaders/LoadingCard"
+import Input from "../../components/common/forms/Input"
+import { SubmitHandler, useForm } from "react-hook-form"
+import PrimaryButton from "../../components/common/button/PrimaryButton"
+import CatalogList from "../../components/catalog/catalogList"
 
-
-
+interface SearchForm {
+    search:string
+}
 function Catalog(){
 
-    const { campgrounds, getCampgrounds} = useCampgrounds()
-    const favoriteCampground = useFavorites()
+    const { register, handleSubmit, setValue } = useForm<SearchForm>()
+    const { campgrounds, loadingCampgrounds,  getCampgrounds} = useCampgrounds()
+    const [ query, setQuery ] = useState('')
     
+    const fetchMemoCampgrounds = useMemo(() => async () => {
+        getCampgrounds(query)
+      }, [query]);
+
+    const checkKeyDown = (e:any) => {
+        if (e.key === 'Enter') {
+            setValue('search', e.target.value)
+        }
+    };
+
+    const searchCampground: SubmitHandler<SearchForm> = (data) => {
+        setQuery(data.search)
+    }
+
     useEffect(() => {
-        getCampgrounds()
-    },[])
+        fetchMemoCampgrounds();
+      }, [query]);
 
     return (
-        <Suspense fallback={<Loading />}>
-            <section className="containerCatalog">
-                { campgrounds.map((campground) => 
-                    <CardCatalog 
-                        key={campground.id} 
-                        campground={campground} 
-                        favoriteCampground={favoriteCampground?.favoritesCampgrounds}
-                    /> 
-                )}
-            </section>
-        </Suspense>
+        
+        <section className="containerCatalog">
+            <form onSubmit={handleSubmit(searchCampground)} onKeyDown={(e) => checkKeyDown(e)} className="containerSearch">
+                <Input
+                    type='text'
+                    register={ register }
+                    name='search'
+                    placeholder="Search by name..."
+                />
+                <PrimaryButton 
+                    type='submit'
+                    title="Search"
+                    isLoading={ loadingCampgrounds } 
+                    click={ () => handleSubmit }
+                />
+            </form>
+            
+            { loadingCampgrounds ?
+                <>
+                    <LoaderCard height={311} />
+                    <LoaderCard height={311} />
+                    <LoaderCard height={311} />
+                </>
+            :
+                <CatalogList campgrounds={campgrounds} />
+            }
+        </section>
+        
         
         
     )
