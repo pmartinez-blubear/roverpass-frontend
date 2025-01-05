@@ -124,7 +124,7 @@
     position: sticky;
     top: 67px;
     background: white;
-    z-index: 100;
+    z-index: 10;
     padding: 16px 0;
 }
 
