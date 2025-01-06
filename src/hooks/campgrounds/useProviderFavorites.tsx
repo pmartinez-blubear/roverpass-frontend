@@ -18,8 +18,8 @@ const useProviderFavorites = () => {
         dispatch({ type: 'addFavorite', payload: campground })
     }
 
-    const deleteFavoriteCampground = (campground:FavoriteCampground) => {
-        dispatch({ type: 'removeFavorite', payload: campground.id })
+    const deleteFavoriteCampground = (deleteFavoriteCampground:number) => {
+        dispatch({ type: 'removeFavorite', payload: deleteFavoriteCampground })
     }
 
     const updateFavoriteCampground = (campgrounds:FavoriteCampground[]) => {

@@ -1,16 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Campgrounds } from "../../interfaces/campgrounds/campgroundsInterface";
 import CardCatalog from "./cardCatalog";
-import { useFavorites } from "../../contexts/favorites/favoritesContext";
 
 interface CatalogListProps {
     campgrounds:Campgrounds[],
 }
 
 function CatalogList({campgrounds = []}:CatalogListProps){
-
-    const favoriteCampground = useFavorites()
-
     return(
         <>
             {   campgrounds && campgrounds.length > 0 ? 
@@ -18,8 +14,7 @@ function CatalogList({campgrounds = []}:CatalogListProps){
                 { campgrounds.map((campground) => 
                     <CardCatalog 
                         key={campground.id} 
-                        campground={campground} 
-                        favoriteCampground={favoriteCampground?.favoritesCampgrounds}
+                        campground={campground}
                     /> 
                 )}
                 </>

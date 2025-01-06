@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getLocalStorage } from "../../providers/localStorage/localStorageProvider";
+import { getLocalStorage } from "../../utils/localStorageProvider";
 import { axiosRequestInterceptor } from "../../interceptor/axios";
 import { handleError } from "../../utils/errorMessages";
 import { useLocation, useNavigate } from "react-router";

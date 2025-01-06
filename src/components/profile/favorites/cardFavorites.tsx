@@ -10,9 +10,7 @@ interface CardSavedProps {
   deleteCampground:(deleteCampground:FavoriteCampground) => void
 }
 
-function CardFavorites({ campground, isLoadingDeleteFavorite, deleteCampground }:CardSavedProps) {
-
-  
+function CardFavorites({ campground, isLoadingDeleteFavorite, deleteCampground }:CardSavedProps) {  
 
   return (
     <div className='cardFavorites'>

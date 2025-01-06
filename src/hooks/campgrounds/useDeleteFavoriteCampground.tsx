@@ -15,16 +15,16 @@ const useDeleteFavoriteCampgrounds = () => {
     const [ isLoadingDeleteFavorite, setIsLoadingDeleteFavorite ] = useState(false);
     const [ errorDeleteFavorite, setErrorDeleteFavorite ] = useState('');
     
-    const removeFavoriteCampground = async (campground:FavoriteCampground) => {
+    const removeFavoriteCampground = async (campgroundFavoriteID:number) => {
         setIsLoadingDeleteFavorite(true);
-        const data = await axiosPetition.delete(`favorites/${campground.id}.json`).catch((error) => {
+        const data = await axiosPetition.delete(`favorites/${campgroundFavoriteID}.json`).catch((error) => {
             setErrorDeleteFavorite(handleError(error));
         }).finally(() => {
             setIsLoadingDeleteFavorite(false);
         });
 
          if(data){
-            useFavorite?.deleteFavoriteCampground(campground)
+            useFavorite?.deleteFavoriteCampground(campgroundFavoriteID)
          } 
         
     }

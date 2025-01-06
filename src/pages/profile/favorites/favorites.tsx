@@ -37,7 +37,7 @@ function ProfileFavorites() {
     }
 
     const handleDelete = () => {
-        if(tempCampground) removeFavoriteCampground(tempCampground)
+        if(tempCampground) removeFavoriteCampground(tempCampground.id)
         setShowModalDelete(false)
     }
 

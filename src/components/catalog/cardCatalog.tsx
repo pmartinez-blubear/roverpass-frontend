@@ -7,37 +7,31 @@ import { useAuth } from '../../contexts/auth/authContext';
 import useSaveFavoriteCampgrounds from '../../hooks/campgrounds/useSaveFavoriteCampground';
 import useDeleteFavoriteCampgrounds from '../../hooks/campgrounds/useDeleteFavoriteCampground';
 import '../../styles/catalog/catalog.css'
+import { useFavorites } from '../../contexts/favorites/favoritesContext';
 
 interface CardCatalogProps {
     campground:Campgrounds,
-    favoriteCampground: FavoriteCampground[] | undefined
 }
-function CardCatalog({campground, favoriteCampground}:CardCatalogProps) {
+function CardCatalog({campground}:CardCatalogProps) {
     
     const auth = useAuth()
-    const { saveFavoriteCampground, isLoadingFavorite } = useSaveFavoriteCampgrounds()
-    const { removeFavoriteCampground, isLoadingDeleteFavorite } = useDeleteFavoriteCampgrounds()
-    
+    const { saveFavoriteCampground, isLoadingFavorite, errorFavorite } = useSaveFavoriteCampgrounds()
+    const { removeFavoriteCampground, isLoadingDeleteFavorite, errorDeleteFavorite } = useDeleteFavoriteCampgrounds()
 
     const [saved, setSaved] = useState(campground.is_favorited ?? false);
 
-    useEffect(() => {
-        const isFavorite = favoriteCampground?.find((camp:FavoriteCampground) => camp.campground.id === campground.id)
-        setSaved( isFavorite ? true : false)
-    },[favoriteCampground])
-    
-
-    const handleSaveCamp = () => {
+    const handleSaveCamp = async () => {
         if(!auth?.user){
             auth?.handleShowModalLogin(true)
             return;
         }
         // save camp
-        if(!saved){
-            saveFavoriteCampground(campground)
+        if(saved && campground.favorited_id){
+            await removeFavoriteCampground(campground.favorited_id)
+            if(!errorDeleteFavorite) setSaved(false)
         }else{
-            const findInFavorite = favoriteCampground?.find((camp:FavoriteCampground) => camp.campground.id === campground.id)
-            if(findInFavorite) removeFavoriteCampground(findInFavorite)
+            await saveFavoriteCampground(campground)
+            if(!errorFavorite)setSaved(true)
         }
     }
 

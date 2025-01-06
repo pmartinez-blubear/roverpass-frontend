@@ -1,3 +1,3 @@
-import { getLocalStorage } from "../../providers/localStorage/localStorageProvider";
+import { getLocalStorage } from "../../utils/localStorageProvider";
 
 export const user = getLocalStorage('user');

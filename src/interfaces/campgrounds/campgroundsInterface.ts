@@ -9,6 +9,7 @@ export interface Campgrounds {
     updated_at?:  Date;
     url?:         string;
     is_favorited: boolean | null;
+    favorited_id: number  | null
 }
 
 
@@ -17,8 +18,8 @@ export interface FavoriteCampground {
     user_id:       number;
     campground_id: number;
     campground:    Campgrounds;
-    created_at:    Date;
-    updated_at:    Date;
+    created_at?:    Date;
+    updated_at?:    Date;
     url:           string;
 }
 
@@ -26,6 +27,6 @@ export interface FavoriteCampground {
 export interface FavoritesContextType {
     favoritesCampgrounds: FavoriteCampground[];
     addFavoriteCampground: (campground:FavoriteCampground) => void;
-    deleteFavoriteCampground: (campground:FavoriteCampground) => void;
+    deleteFavoriteCampground: (campgroundFavoriteID:number) => void;
     updateFavoriteCampground: (campgrounds:FavoriteCampground[]) => void;
 }

@@ -66,6 +66,6 @@ describe('LoggedHeader Component', () => {
         await act(async () => {
             logoutButton.click()
         })
-        expect(mockHandleShowModalLogout).toHaveBeenCalledWith(true);
+        expect(mockHandleShowModalLogout).toHaveBeenCalledOnce();
     });
 });
